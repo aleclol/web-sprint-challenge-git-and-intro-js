@@ -249,15 +249,8 @@ Use listOfNames to do the following:
 
 function listOfNames(array) {
   let newArray = [... array];
-  // for(let i = 0; i < array.length; i++){
-  //   delete newArray[i]['id','years','genre','nationality','bio','wikipedia','paintings'];
-  // }
-  for(let key in newArray){
-    //console.log();
-    if(key !== 'name'){
-      console.log(key);
-      delete key;
-    }
+  for(let i = 0; i < newArray.length; i++){
+    newArray[i] = newArray[i].name;
   }
   return newArray;
 }
@@ -275,10 +268,15 @@ Use removeArtist to do the following:
 5. Return the resulting copied array
 🌟 EXAMPLE: if removeArtist is invoked with the artists array and the number 0, it will return the resulting array with Amedeo Modigliani removed from our dataset. */
 
-function removeArtist(/*Your Code Here*/) {
-  /*Your Code Here*/
+function removeArtist(array, index) {
+  let newArray = [...array];
+  
+  newArray.splice(index,1);
+
+  return newArray;
 }
 
+console.log(removeArtist(artists, 0));
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 6: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
@@ -297,8 +295,18 @@ Use addArtist to do the following:
 5. Add the newly created object to the copied array, then return the copied array
 🌟 EXAMPLE: Invoking addArtist(artists, 'John Doe', '1988-2022', 'Full Stack Development', 'African American', 'I have a background in customer service at Big Retail Chain. I am attending BloomTech to become a Frontend Developer.') should return the artists array with the above object added to the end of the array. */
 
-function addArtist(/*Your Code Here*/) {
-  /*Your Code Here*/
+function addArtist(array, name, years, genre, nationality, bio) {
+  let newArray = [... array];
+  newArray.push(
+    { 
+      name: name, 
+      years: years,
+      genre: genre, 
+      nationality: nationality,
+      bio: bio
+    }
+  )
+  return newArray;
 }
 
 
@@ -311,10 +319,16 @@ Use lotsOfArt to do the following:
 🌟 EXAMPLE: lotsOfArt(artists) will return ["Amedeo Modigliani", "Rene Magritte", ... "Albrecht Dürer"]
 */
 
-function lotsOfArt(/*Your Code Here*/) {
-  /*Your Code Here*/
-}
+function lotsOfArt(array) {
+let club100 = [];
 
+  for(let artists in array){
+    if(array[artists].paintings > 100){
+      club100.push(array[artists].name);
+    }
+  }
+return club100;  
+}
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 8: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
